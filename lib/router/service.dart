@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart' show ChangeNotifier;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:i_dance/providers/firebase.dart';
@@ -41,15 +40,6 @@ class AppService extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _loginStateHandler(User? event) async {
-    if (event != null) {
-      loginState = true;
-
-      return;
-    }
-    loginState = false;
-  }
-
   Future<void> onAppStart() async {
     // final box = await _ref.read(utilHiveProvider.future);
 
@@ -60,6 +50,8 @@ class AppService extends ChangeNotifier {
 
     if (auth.currentUser == null) {
       _loginState = false;
+    } else {
+      _loginState = true;
     }
     // if (await auth.getSession(sessionId: 'current')) {
     //   _loginState = false;

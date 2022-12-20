@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:i_dance/controllers/auth/auth_controller.dart';
 import 'package:i_dance/router/router_provider.dart';
 import 'package:i_dance/router/utils.dart';
 
@@ -40,8 +41,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                context.go(AppPage.home.toPath);
-                ref.read(appServiceProvider.notifier).loginState = true;
+                ref
+                    .read(authControllerProvider.notifier)
+                    .signInWithEmail(
+                        email: _emailController.text,
+                        password: _passwordController.text)
+                    .then((value) => ref
+                        .read(appServiceProvider.notifier)
+                        .loginState = true);
               },
               child: const Text('Log in'),
             ),
@@ -54,31 +61,35 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               child: const Text('Register'),
             ),
             const SizedBox(height: 16.0),
-            Row(
-              children: const [
-                Expanded(child: Divider()),
-                Text('OR'),
-                Expanded(child: Divider())
-              ],
-            ),
+            // Row(
+            //   children: const [
+            //     Expanded(child: Divider()),
+            //     Text('OR'),
+            //     Expanded(child: Divider())
+            //   ],
+            // ),
 
-            // outlined button with google icon
-            OutlinedButton.icon(
-              onPressed: () async {
-                // Perform Google login
-                // try {
-                //   await _googleSignIn.signIn();
-                //   // Login successful
-                // } catch (error) {
-                //   // Login failed
-                // }
-              },
-              icon: Image.asset(
-                'assets/images/google.png',
-                height: 24.0,
-              ),
-              label: const Text('Sign in with Google'),
-            ),
+            // // outlined button with google icon
+            // OutlinedButton.icon(
+            //   onPressed: () async {
+            //     ref.read(authControllerProvider.notifier).loginWithGoogle();
+            //     // .then((value) => ref
+            //     //     .read(appServiceProvider.notifier)
+            //     //     .loginState = true);
+            //     // Perform Google login
+            //     // try {
+            //     //   await _googleSignIn.signIn();
+            //     //   // Login successful
+            //     // } catch (error) {
+            //     //   // Login failed
+            //     // }
+            //   },
+            //   icon: Image.asset(
+            //     'assets/images/google.png',
+            //     height: 24.0,
+            //   ),
+            //   label: const Text('Sign in with Google'),
+            // ),
           ],
         ),
       ),

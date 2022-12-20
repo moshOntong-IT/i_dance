@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:i_dance/controllers/auth/auth_controller.dart';
+import 'package:i_dance/router/router_provider.dart';
 import 'package:i_dance/router/utils.dart';
 
-class RegisterScreen extends StatefulWidget {
+class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  ConsumerState<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -94,11 +95,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           .registerWithEmail(
                               name: _fullNameController.text,
                               email: _emailController.text,
-                              password: _passwordController.text);
+                              password: _passwordController.text)
+                          .then((value) => ref
+                              .read(appServiceProvider.notifier)
+                              .loginState = true);
                     }
                   },
                   child: authState.when(
-                    data: (_) => const Text('Sign up'),
+                    data: (data) => const Text('Sign up'),
                     error: ((error, stackTrace) => Text(error.toString())),
                     loading: () => const SizedBox(
                       height: 10,

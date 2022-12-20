@@ -3,6 +3,7 @@ import 'package:i_dance/screens/classroom_screen.dart';
 import 'package:i_dance/screens/create_lesson_screen.dart';
 import 'package:i_dance/screens/home_screen.dart';
 import 'package:i_dance/screens/login_screen.dart';
+import 'package:i_dance/screens/profile_screen.dart';
 import 'package:i_dance/screens/register_screen.dart';
 import 'package:i_dance/screens/splash_screen.dart';
 
@@ -117,6 +118,13 @@ final routes = [
       return CreateLessonScreen(id: id ?? 'Empty');
     },
   ),
+
+  GoRoute(
+      path: AppPage.profile.toPath,
+      name: AppPage.profile.toName,
+      builder: ((context, state) {
+        return const ProfileScreen();
+      }))
 ];
 
 extension AppPageExtension on AppPage {

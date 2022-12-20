@@ -1,16 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logging/logging.dart';
 
 class AuthRepository {
-  const AuthRepository({required this.authInstance});
+  AuthRepository({required this.authInstance});
+
+  Logger _logger = Logger('AuthRepository');
 
   final FirebaseAuth authInstance;
-  Future<void> login(String email, String password) async {
+  Future<bool> login(String email, String password) async {
     await authInstance.signInWithEmailAndPassword(
         email: email, password: password);
+
+    return true;
   }
 
-  Future<void> register(
+  Future<bool> register(
       {required String name,
       required String email,
       required String password}) async {
@@ -19,10 +24,14 @@ class AuthRepository {
           email: email, password: password);
 
       await firebaseUser.user!.updateDisplayName(name);
-    } catch (_) {}
+
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
-  Future<void> loginWithGoogle() async {
+  Future<bool> loginWithGoogle() async {
     try {
       final googleUser = await GoogleSignIn().signIn();
       final googleAuth = await googleUser!.authentication;
@@ -33,10 +42,16 @@ class AuthRepository {
       );
 
       await authInstance.signInWithCredential(credential);
-    } catch (_) {}
+
+      return true;
+    } catch (e) {
+      _logger.severe(e);
+      return false;
+    }
   }
 
-  Future<void> logout() async {
+  Future<bool> logout() async {
     await authInstance.signOut();
+    return true;
   }
 }

@@ -6,7 +6,10 @@ part 'auth_controller.g.dart';
 @riverpod
 class AuthController extends _$AuthController {
   @override
-  FutureOr<void> build() {}
+  FutureOr<bool> build() async {
+    return false;
+  }
+
   Future<void> signInWithEmail(
       {required String email, required String password}) async {
     final authRepository = ref.read(authRepoProvider);
@@ -39,5 +42,13 @@ class AuthController extends _$AuthController {
     state = const AsyncLoading();
 
     state = await AsyncValue.guard(() => authRepository.loginWithGoogle());
+  }
+
+  Future<void> signOut() async {
+    final authRepository = ref.read(authRepoProvider);
+
+    state = const AsyncLoading();
+
+    state = await AsyncValue.guard(() => authRepository.logout());
   }
 }

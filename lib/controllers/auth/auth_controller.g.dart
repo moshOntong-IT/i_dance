@@ -29,20 +29,20 @@ class _SystemHash {
   }
 }
 
-String $AuthControllerHash() => r'4b266d5a992dcf29230e372f01f0873164fa12a8';
+String $AuthControllerHash() => r'4278a6c14114a4761e8737ba2e57e82f9a544567';
 
 /// See also [AuthController].
 final authControllerProvider =
-    AutoDisposeAsyncNotifierProvider<AuthController, void>(
+    AutoDisposeAsyncNotifierProvider<AuthController, bool>(
   AuthController.new,
   name: r'authControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : $AuthControllerHash,
 );
-typedef AuthControllerRef = AutoDisposeAsyncNotifierProviderRef<void>;
+typedef AuthControllerRef = AutoDisposeAsyncNotifierProviderRef<bool>;
 
-abstract class _$AuthController extends AutoDisposeAsyncNotifier<void> {
+abstract class _$AuthController extends AutoDisposeAsyncNotifier<bool> {
   @override
-  FutureOr<void> build();
+  FutureOr<bool> build();
 }
