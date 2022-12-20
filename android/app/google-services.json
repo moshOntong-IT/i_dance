@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "583230285850",
+    "project_id": "idance-f47da",
+    "storage_bucket": "idance-f47da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583230285850:android:757141974dd99bd2b5c9a3",
+        "android_client_info": {
+          "package_name": "com.example.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583230285850-6cpiv8dm8svv582741hpq81goc2hugi2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzNG8Sb2VmJPTdNrHX0dNWF7lwCR8xWKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583230285850-6cpiv8dm8svv582741hpq81goc2hugi2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "583230285850-phsvi8vbf7rj49oeuc49e8fud1v3vorg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.iDance"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583230285850:android:2151844d92d298c2b5c9a3",
+        "android_client_info": {
+          "package_name": "com.example.i_dance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583230285850-6cpiv8dm8svv582741hpq81goc2hugi2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzNG8Sb2VmJPTdNrHX0dNWF7lwCR8xWKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583230285850-6cpiv8dm8svv582741hpq81goc2hugi2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "583230285850-phsvi8vbf7rj49oeuc49e8fud1v3vorg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.iDance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
